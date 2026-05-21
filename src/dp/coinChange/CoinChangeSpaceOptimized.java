@@ -1,5 +1,8 @@
-package dp;
+package dp.coinChange;
 
+/**
+ * Coin Change 2
+ */
 public class CoinChangeSpaceOptimized {
 
     public static int coinChangeSpaceOptimized(int[] coins, int sum) {
@@ -7,7 +10,7 @@ public class CoinChangeSpaceOptimized {
         int[] dp = new int[sum + 1];
         dp[0] = 1;
 
-        for (int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = coins[i]; j <= sum; j++) {
                 dp[j] += dp[j - coins[i]];
             }

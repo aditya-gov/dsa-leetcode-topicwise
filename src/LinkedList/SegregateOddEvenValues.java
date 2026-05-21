@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class SegregateOddEven {
+public class SegregateOddEvenValues {
 
     static class Node {
         int data;

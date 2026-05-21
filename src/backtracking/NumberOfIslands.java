@@ -1,4 +1,4 @@
-package graph;
+package backtracking;
 
 public class NumberOfIslands {
 

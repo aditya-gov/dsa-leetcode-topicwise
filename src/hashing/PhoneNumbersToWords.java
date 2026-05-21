@@ -1,8 +1,10 @@
+package hashing;
+
 import java.util.*;
 
 public class PhoneNumbersToWords {
 
-    private static Map<Character, Character> charDigitMap = new HashMap<>();
+    private static final Map<Character, Character> charDigitMap = new HashMap<>();
 
     static {
         charDigitMap.put('a', '2');
@@ -36,9 +38,9 @@ public class PhoneNumbersToWords {
 
     private static String wordToDigits(String word) {
         StringBuilder sb = new StringBuilder();
-        for (char c : word.toLowerCase().toCharArray()) {
+        for (char c : word.toLowerCase().toCharArray()) { // O(word.size())
             if (charDigitMap.containsKey(c)) {
-                sb.append(charDigitMap.get(c));
+                sb.append(charDigitMap.get(c)); // O(1)
             } else {
                 return "";
             }

@@ -1,4 +1,4 @@
-package BinaryTree;
+package BinarySearchTree;
 
 public class InorderSuccessorBST {
 

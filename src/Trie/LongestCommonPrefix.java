@@ -1,46 +1,69 @@
-package dp;
+package Trie;
 
 public class LongestCommonPrefix {
 
-    TrieNode root;
+    private final TrieNode root;
+
+    public LongestCommonPrefix() {
+        root = new TrieNode();
+    }
 
     public String longestCommonPrefix(String[] strs) {
         int n = strs.length;
-        if (n == 0 || strs == null) {
+        if (n == 0) {
             return "";
         }
         if (n == 1) {
             return strs[0];
         }
         this.insert(strs);
-        return this.search(strs[0], n);
+        return this.longestCommonPrefixUtil();
     }
 
     public void insert(String[] strs) {
-        TrieNode current = root;
         for (String str : strs) {
-            for (char ch : str.toCharArray()) {
-                if (!current.containsKey(ch)) {
-                    current.put(ch, new TrieNode());
+            TrieNode current = root;
+            for (int i = 0; i < str.length(); i++) {
+                int index = str.charAt(i) - 'a';
+                if (current.child[index] == null) {
+                    current.child[index] = new TrieNode();
+                    current.child[index].ch = str.charAt(i);
                 }
-                current.get(ch).count++;
-                current = current.get(ch);
+                current = current.child[index];
             }
             current.isEnd = true;
         }
     }
 
-    public String search(String str, int n) {
+    public String longestCommonPrefixUtil() {
         TrieNode current = root;
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (current.get(ch) != null && current.get(ch).count == n) {
-                current = current.get(ch);
-            } else {
-                return str.substring(0, i);
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            int count = 0;
+            TrieNode next = null;
+            for (int i = 0; i < 26; i++) {
+                if (current.child[i] != null) {
+                    count++;
+                    next = current.child[i];
+                }
             }
+            if (count != 1 || current.isEnd) {
+                break;
+            }
+            sb.append(next.ch);
+            current = next;
         }
-        return str;
+        return sb.toString();
+    }
+
+    static class TrieNode {
+        TrieNode[] child;
+        boolean isEnd;
+        char ch;
+        TrieNode() {
+            child = new TrieNode[26];
+            isEnd = false;
+        }
     }
 
     public static void main(String[] args) {
@@ -48,23 +71,8 @@ public class LongestCommonPrefix {
         LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix();
         System.out.println("Longest common prefix: " + longestCommonPrefix.longestCommonPrefix(strs));
     }
-
-    class TrieNode {
-        TrieNode[] child;
-        boolean isEnd;
-        int count = 0;
-
-        public boolean containsKey(char ch) {
-            return child[ch - 'a'] != null;
-        }
-        public TrieNode get(char ch) {
-            return child[ch - 'a'];
-        }
-        public void put(char ch, TrieNode node) {
-            child[ch - 'a'] = node;
-        }
-    }
-
 }
+
+
 
 
