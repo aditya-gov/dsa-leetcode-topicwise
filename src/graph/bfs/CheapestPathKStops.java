@@ -8,7 +8,7 @@ import java.util.*;
 
 public class CheapestPathKStops {
 
-    public int findCheapestWithKStops(int n, int[][] flights, int src, int dst, int k) {
+    public static int findCheapestWithKStops(int n, int[][] flights, int src, int dst, int k) {
         // Step 1: Build Adjacency List Map<City, List<[NextCity, Price]>>
         Map<Integer, List<int[]>> graph = new HashMap<>();
         for (int[] flight : flights) {
@@ -58,5 +58,10 @@ public class CheapestPathKStops {
 
     public static void main(String[] args) {
         // [[0, 1, 100], [1, 2, 200], [0, 2, 500], src = 0, dst = 2, k = 1
+        int[][] flights = {{0, 1, 100}, {1, 2, 200}, {0, 2, 500}};
+        int src = 0, dst = 2;
+        int k = 1;
+        int n = 3;
+        System.out.println(findCheapestWithKStops(n, flights, src, dst, k));
     }
 }
