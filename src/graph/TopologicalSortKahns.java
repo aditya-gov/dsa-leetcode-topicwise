@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * Kahn's algorithm to compute Topological Sorting
+ * Kahn's algorithm to compute Topological Sorting using BFS approach
  */
 public class TopologicalSortKahns {
 

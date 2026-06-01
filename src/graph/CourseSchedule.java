@@ -26,10 +26,10 @@ public class CourseSchedule {
             }
         }
         while (!q.isEmpty()) {
-            int course = q.poll();
+            int course = q.poll(); // course being the pre-requisite
             count++;
             for (int i = 0; i < numCourses; i++) {
-                if (mat[course][i] != 0) {
+                if (mat[course][i] != 0) { // i here being the course to opt
                     if (--inDegree[i] == 0) {
                         q.add(i);
                     }

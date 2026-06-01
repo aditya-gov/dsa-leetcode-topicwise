@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * DFS based topological sorting algorithm
+ */
 public class TopologicalSorting {
 
     public static void topologicalSort(List<List<Integer>> adj, int V) {
