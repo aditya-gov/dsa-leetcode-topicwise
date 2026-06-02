@@ -22,7 +22,7 @@ public class SCCKosaraju {
         adj[v].add(w);
     }
 
-    private void DFSUtil(int v,boolean[] visited) {
+    private void DFSUtil(int v, boolean[] visited) {
         visited[v] = true;
         System.out.print(v + " ");
         for (Integer i : adj[v]) {
@@ -65,7 +65,6 @@ public class SCCKosaraju {
             }
         }
         SCCKosaraju gr = getTranspose();
-
         for (int i = 0; i < V; i++) {
             visited[i] = false;
         }

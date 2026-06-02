@@ -43,8 +43,12 @@ public class ShortestPathUndirected {
         for (int i = 0; i < V; i++) {
             adjList.add(new ArrayList<>());
         }
-        for (int[] edge : edges) {
+        /*for (int[] edge : edges) {
             adjList.get(edge[0]).add(edge[1]);
+        }*/
+        // alternative approach to add elements to the adjacency list
+        for (int[] edge : edges) {
+            addEdge(adjList, edge[0], edge[1]);
         }
         return adjList;
     }
