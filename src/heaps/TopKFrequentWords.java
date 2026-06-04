@@ -9,10 +9,16 @@ public class TopKFrequentWords {
         for (String word : words) {
             hm.put(word, hm.getOrDefault(word, 0) + 1);
         }
-        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(k,
+        // First approach
+        /*PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(k,
                 (a, b) -> Objects.equals(a.getValue(), b.getValue())
-                        ? a.getKey().compareTo(b.getKey()) : b.getValue() - a.getValue());
+                        ? a.getKey().compareTo(b.getKey()) : Integer.compare(b.getValue(), a.getValue()));*/
 
+        // Second approach (Comparator way)
+        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(k,
+                Comparator.<Map.Entry<String, Integer>> comparingInt(Map.Entry::getValue)
+                        .reversed()
+                        .thenComparing(Map.Entry::getKey));
         for (Map.Entry<String, Integer> en : hm.entrySet()) {
             pq.offer(en);
         }

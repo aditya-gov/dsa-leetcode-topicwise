@@ -3,6 +3,9 @@ package dp;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * <a href="https://leetcode.com/problems/minimum-cost-for-tickets/">...</a>
+ */
 public class MinCostForTickets {
 
     public static int minCostTickets(int[] days, int[] costs) {

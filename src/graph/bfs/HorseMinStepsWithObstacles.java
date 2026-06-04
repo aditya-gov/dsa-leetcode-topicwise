@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class HorseMinStepsWithObstacles {
 
-    public int minStepsWithObstacles(int[][] grid, int[] source, int[] target) {
+    public static int minStepsWithObstacles(int[][] grid, int[] source, int[] target) {
         int rows = grid.length;
         int cols = grid[0].length;
 
@@ -54,6 +54,15 @@ public class HorseMinStepsWithObstacles {
     }
 
     public static void main(String[] args) {
-        
+        int[][] grid = {
+                {0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+        int[] source = {0, 0};
+        int[] target = {4, 4};
+        System.out.println(minStepsWithObstacles(grid, source, target));
     }
 }
