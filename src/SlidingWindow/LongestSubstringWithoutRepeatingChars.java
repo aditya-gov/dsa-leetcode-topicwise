@@ -1,4 +1,4 @@
-package strings;
+package SlidingWindow;
 
 public class LongestSubstringWithoutRepeatingChars {
 
